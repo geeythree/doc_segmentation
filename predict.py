@@ -9,7 +9,7 @@ from segment_anything import SamAutomaticMaskGenerator, sam_model_registry
 sam_model = sam_model_registry[model_type](checkpoint=checkpoint)
 
 mask_generator = SamAutomaticMaskGenerator(sam_model)
-image = cv2.imread(r"D:\github\doc_layout_analysis\dataset\train\PMC1187902_00002.jpg")
+image = cv2.imread(r"dataset/train/PMC1187902_00002.jpg")
 masks = mask_generator.generate(image)
 
 for mask in masks:

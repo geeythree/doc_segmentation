@@ -4,7 +4,7 @@ from utils.data_loader import get_data
 import matplotlib.pyplot as plt
 
 
-path = r"dataset\train.json"
+path = r"dataset/train.json"
 
 img_indices, images, categories = get_data(path)
 
@@ -12,7 +12,7 @@ pos = 0
 image_id = list(images.keys())[pos]
 name = img_indices[image_id]
 
-image_path = r"dataset\train\%s"%name
+image_path = r"dataset/train/%s"%name
 print(image_path)
 
 image = Image.open(image_path)

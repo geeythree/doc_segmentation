@@ -46,12 +46,14 @@ def get_ground_truth(images: dict):
     """
     bbox = {}
     ground_truth_masks = {}
-    for image in images:    
-        for item in images[image]['annotations']:
-            bbox[image] = item['bbox']
-            ground_truth_masks[image] = []
-            for mask in item['segmentation']:
-                binary_mask = get_binary_mask(images[image]['height'], images[image]['width'], mask)
-                ground_truth_masks[image].append(binary_mask)
+    for image in images:
+        if images[image]['annotations'] != []:
+            ground_truth_masks[image] = []  
+            bbox[image] = []  
+            for ann in images[image]['annotations']:
+                bbox[image].append(ann['bbox'])
+                for mask in ann['segmentation']:
+                    bin_mask = get_binary_mask(images[image]['height'], images[image]['width'], mask)
+                    ground_truth_masks[image].append(bin_mask)
 
     return bbox, ground_truth_masks
